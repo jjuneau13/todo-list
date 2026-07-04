@@ -7,10 +7,18 @@ if (getProjects().length == 0) {
 }
 
 //Sets up cancel button for the add note form
-const cancelButton = document.querySelector("#closeNote");
-cancelButton.addEventListener("click", () => {
+const cancelNote = document.querySelector("#closeNote");
+cancelNote.addEventListener("click", () => {
     document.querySelector("#noteForm").reset();
     document.querySelector("#newNote").close();
+})
+
+const submitNote = document.querySelector("#submitNote");
+submitNote.addEventListener("click", () => {
+    const noteForm = new FormData(document.querySelector("#noteForm"));
+    if (noteForm.get("title")) {
+        console.log(noteForm.entries());
+    }
 })
 
 addProject('second');

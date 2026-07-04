@@ -96,9 +96,29 @@ h2 {
     border-radius: 20px;
 }
 
-#noteForm > div {
+#noteTitle,
+#noteDescription,
+#noteDate {
     display: flex;
     flex-direction: column;
+}
+
+#formButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#formButtons > button {
+    background-color: rgb(30, 30, 30);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+#formButtons > button:hover {
+    background-color: rgb(50, 50, 50);
 }
 
 #noteForm {

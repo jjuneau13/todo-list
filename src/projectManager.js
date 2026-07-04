@@ -20,7 +20,6 @@ function getActiveProject() {
 
 function setActiveProject(project) {
     activeProject = project;
-    console.log(activeProject);
 }
 
 function getProjects() {
