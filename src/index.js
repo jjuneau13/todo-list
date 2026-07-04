@@ -1,9 +1,10 @@
 import Note from "./note.js";
 import Project from "./project.js";
+import { displayProject } from "./projectDOM.js";
 
-const note = new Note('thing');
-const proj = new Project('bigThing');
+const note = new Note('again');
+const proj1 = new Project('2');
 
-proj.addNote(note);
+proj1.addNote(note);
 
-localStorage.setItem("Project", JSON.stringify(proj));
+displayProject(proj1);
