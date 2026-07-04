@@ -12,7 +12,7 @@
     <div class="sidebar">
         <div class="sidebar-header">
             <h2>Projects</h2>
-            <button type="button" id="addProject" title="Add Note"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg></button>
+            <button id="addProject" title="Add Project" command="show-modal" commandfor="newProject"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg></button>
         </div>
         
     </div>
@@ -37,9 +37,21 @@
                 <label for="dueDate">Date:</label>
                 <input type="date" name="dueDate" id="dueDate">
             </div>
-            <div id="formButtons">
+            <div class="formButtons">
                 <button type="button" id="closeNote">Cancel</button>
                 <button type="submit" id="submitNote">Submit</button>
+            </div>
+        </form>
+    </dialog>
+    <dialog id="newProject">
+        <form id="projectForm" method="dialog">
+            <div id="projectName">
+                <label for="projectTitle">Project Name: </label>
+                <input type="text" name="projectTitle" id="projectTitle">
+            </div>
+            <div class="formButtons">
+                <button type="button" id="closeProject">Cancel</button>
+                <button type="submit" id="submitProject">Submit</button>
             </div>
         </form>
     </dialog>

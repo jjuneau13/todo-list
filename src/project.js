@@ -11,4 +11,8 @@ export default class Project {
         const newNote = new Note(title, description, dueDate, priority);
         this.notes.push(newNote);
     }
+
+    getNotes() {
+        return this.notes;
+    }
 }

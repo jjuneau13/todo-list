@@ -7,7 +7,7 @@ function displayProject(notes) {
     });
 }
 
-function addButton(func, name, id) {
+function addProjectToSidebar(func, name, id) {
     const sidebar = document.querySelector(".sidebar");
     const button = createChild("button", name);
     button.setAttribute("data-id", id);
@@ -17,8 +17,8 @@ function addButton(func, name, id) {
     sidebar.appendChild(button)
 }
 
-function delButton(button) {
+function delProjectSidebar(button) {
     button.remove();
 }
 
-export { displayProject, addButton, createChild }
+export { displayProject, addProjectToSidebar }

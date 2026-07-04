@@ -89,7 +89,8 @@ h2 {
     box-shadow: 5px 5px 10px rgb(21, 21, 21);
 }
 
-#newNote {
+#newNote,
+#newProject {
     background-color: rgb(30, 30, 30);
     color: white;
     border: none;
@@ -98,18 +99,19 @@ h2 {
 
 #noteTitle,
 #noteDescription,
-#noteDate {
+#noteDate,
+#projectName {
     display: flex;
     flex-direction: column;
 }
 
-#formButtons {
+.formButtons {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-#formButtons > button {
+.formButtons > button {
     background-color: rgb(30, 30, 30);
     color: white;
     border: none;
@@ -117,11 +119,12 @@ h2 {
     border-radius: 5px;
 }
 
-#formButtons > button:hover {
+.formButtons > button:hover {
     background-color: rgb(50, 50, 50);
 }
 
-#noteForm {
+#noteForm,
+#projectForm {
     padding: 15px;
     display: flex;
     flex-direction: column;

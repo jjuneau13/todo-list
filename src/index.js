@@ -1,33 +1,26 @@
-import { displayProject, addButton } from "./projectDOM.js";
+import { displayProject, addProjectToSidebar } from "./projectDOM.js";
 import { addProject, deleteProject, getActiveProject, setActiveProject, getProjects} from "./projectManager.js";
-
+import { initCancel, attachNoteSubmit } from "./dialog.js";
 
 if (getProjects().length == 0) {
     addProject("New");
 }
 
-//Sets up cancel button for the add note form
-const cancelNote = document.querySelector("#closeNote");
-cancelNote.addEventListener("click", () => {
-    document.querySelector("#noteForm").reset();
-    document.querySelector("#newNote").close();
-})
+initCancel();
+attachNoteSubmit((title, description, dueDate) => {
+    getActiveProject().addNote(title, description, dueDate);
+    displayProject(getActiveProject().notes);
+    console.log(getActiveProject());
+});
 
-const submitNote = document.querySelector("#submitNote");
-submitNote.addEventListener("click", () => {
-    const noteForm = new FormData(document.querySelector("#noteForm"));
-    if (noteForm.get("title")) {
-        console.log(noteForm.entries());
-    }
-})
-
-addProject('second');
-getActiveProject().addNote('crazy', 'i was crazy once');
 
 //Gets the projects in an array and creates a button for them
-getProjects().forEach((project) => {
-    addButton(() => {
+function projectSidebar() {
+    getProjects().forEach((project) => {
+    addProjectToSidebar(() => {
         setActiveProject(project),
         displayProject(project.notes)
     }, project.name, project.id);
-})
+})}
+
+projectSidebar();
