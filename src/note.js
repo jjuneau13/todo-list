@@ -1,5 +1,5 @@
 export default class Note {
-    constructor(title, description = null, dueDate = null, priority = 1) {
+    constructor(title, description, dueDate, priority) {
         this.title = title;
         this.description = description;
         this.dueDate = dueDate;

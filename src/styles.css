@@ -20,19 +20,65 @@ header {
     grid-column: 1/3;
 }
 
+h2 {
+    font-size: 2rem;
+    padding: 0px 20px;
+}
+
 .sidebar {
     grid-column: 1/2;
-    width: 200px;
+    display: flex;
+    flex-direction: column;
+    width: 250px;
     background-color: rgb(50, 50, 50); 
     box-shadow: 10px 10px 10px rgb(30, 30, 30);
-    padding-left: 20px;
+}
+
+.sidebar > button {
+    background-color: rgb(50, 50, 50);
+    color: white;
+    border: none;
+    text-align: start;
+    font-size: 1.4rem;
+    padding: 8px 20px;
+}
+
+.sidebar > button:hover {
+    background-color: rgb(30, 30, 30);
+}
+
+.sidebar > button:active {
+    outline: none;
+    box-shadow: inset 2px 2px 5px rgb(15, 15, 15);
 }
 
 .notes {
     grid-column: 2/3;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-rows: max-content;
     gap: 10px;
+}
+
+.note-header,
+.sidebar-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.note-header > button,
+.sidebar-header > button {
+    background-color: rgb(50, 50, 50);
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border: none;
+}
+
+.note-header > button:hover,
+.sidebar-header > button:hover {
+    background-color: rgb(70, 70, 70);
 }
 
 .notes > div {
@@ -41,4 +87,23 @@ header {
     padding: 0px 15px;
     height: max-content;
     box-shadow: 5px 5px 10px rgb(21, 21, 21);
+}
+
+#newNote {
+    background-color: rgb(30, 30, 30);
+    color: white;
+    border: none;
+    border-radius: 20px;
+}
+
+#noteForm > div {
+    display: flex;
+    flex-direction: column;
+}
+
+#noteForm {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }

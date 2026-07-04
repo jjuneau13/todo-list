@@ -17,4 +17,4 @@ function clearNoteCards() {
     document.querySelector(".notes").innerHTML = '';
 }
 
-export { createNoteCard, clearNoteCards }
+export { createNoteCard, clearNoteCards, createChild }

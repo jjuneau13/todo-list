@@ -1,10 +1,24 @@
-import { createNoteCard, clearNoteCards } from "./noteDOM.js";
+import { createNoteCard, clearNoteCards, createChild } from "./noteDOM.js";
 
-function displayProject(project) {
+function displayProject(notes) {
     clearNoteCards();
-    project.notes.forEach(element => {
+    notes.forEach(element => {
         createNoteCard(element);
     });
 }
 
-export { displayProject }
+function addButton(func, name, id) {
+    const sidebar = document.querySelector(".sidebar");
+    const button = createChild("button", name);
+    button.setAttribute("data-id", id);
+    button.addEventListener("click", () => {
+        func(); 
+    })
+    sidebar.appendChild(button)
+}
+
+function delButton(button) {
+    button.remove();
+}
+
+export { displayProject, addButton, createChild }
