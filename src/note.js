@@ -5,7 +5,7 @@ export default class Note {
         this.dueDate = dueDate;
         this.priority = priority;
         this.completed = false;
-        this.id = crypto.randomUUID;
+        this.id = crypto.randomUUID();
     };
 
     toggleCompleted() {

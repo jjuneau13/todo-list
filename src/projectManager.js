@@ -1,29 +1,33 @@
 import Project from "./project.js";
 
-const projects = [];
+let projects = [];
 let activeProject;
 
 
 function addProject(name) {
     const newProject = new Project(name);
     projects.push(newProject);
-    activeProject = newProject;
+    activeProject = newProject.id;
 }
 
-function deleteProject(projectDEL) {
-    projects = projects.filter((project) => project.id != projectDEL.id);
+function deleteProject(id) {
+    projects = projects.filter((project) => project.id != id);
+}
+
+function deleteNote(id) {
+    getActiveProject().notes = getActiveProject().notes.filter((note) => note.id != id);
 }
 
 function getActiveProject() {
-    return activeProject;
+    return projects.find((project) => project.id == activeProject);
 }
 
-function setActiveProject(project) {
-    activeProject = project;
+function setActiveProject(id) {
+    activeProject = id;
 }
 
 function getProjects() {
     return projects;
 }
 
-export { addProject, deleteProject, getActiveProject, setActiveProject, getProjects }
+export { addProject, deleteProject, getActiveProject, setActiveProject, getProjects, deleteNote }

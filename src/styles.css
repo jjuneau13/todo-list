@@ -34,22 +34,44 @@ h2 {
     box-shadow: 10px 10px 10px rgb(30, 30, 30);
 }
 
-.sidebar > button {
+.sidebar-projects > div {
     background-color: rgb(50, 50, 50);
     color: white;
     border: none;
-    text-align: start;
-    font-size: 1.4rem;
-    padding: 8px 20px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
 }
 
-.sidebar > button:hover {
+.project-button {
+    background-color: rgba(50, 50, 50, 0);
+    color: white;
+    border: none;
+    font-size: 1.4rem;
+    width: 75%;
+    padding: 8px 20px;
+    text-align: start;
+    overflow: hidden;
+}
+
+.sidebar-projects > div:hover {
     background-color: rgb(30, 30, 30);
 }
 
-.sidebar > button:active {
+.sidebar-projects > button:active {
     outline: none;
     box-shadow: inset 2px 2px 5px rgb(15, 15, 15);
+}
+
+.project-delete {
+    background: url("./assets/close.svg") no-repeat center;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
 }
 
 .notes {
@@ -74,6 +96,7 @@ h2 {
     width: 40px;
     border-radius: 50%;
     border: none;
+    margin-right: 10px;
 }
 
 .note-header > button:hover,
@@ -83,10 +106,28 @@ h2 {
 
 .notes > div {
     background-color: rgb(70, 70, 70);
+    position: relative;
     border-radius: 15px;
     padding: 0px 15px;
     height: max-content;
     box-shadow: 5px 5px 10px rgb(21, 21, 21);
+}
+
+.notes > div > button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background-color: rgb(70, 70, 70);
+    border: none;
+    background: url("./assets/close.svg") no-repeat center;
+}
+
+.notes > div > button:hover,
+.project-delete:hover {
+    background-color: rgba(255, 0, 0, 0.71);
 }
 
 #newNote,

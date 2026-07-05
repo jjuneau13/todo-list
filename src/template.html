@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do List</title>
-    <script src="index.js" defer type="module"></script>
-    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>Your Agenda</header>
@@ -14,7 +12,7 @@
             <h2>Projects</h2>
             <button id="addProject" title="Add Project" command="show-modal" commandfor="newProject"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg></button>
         </div>
-        
+        <div class="sidebar-projects"></div>
     </div>
     <div class="notecontainer">
         <div class="note-header">
@@ -24,10 +22,10 @@
         <div class="notes"></div>
     </div>
     <dialog id="newNote">
-        <form id="noteForm" method="dialog">
+        <form id="noteForm" method="dialog" novalidate>
             <div id="noteTitle">
                 <label for="title">Title: </label>
-                <input type="text" id="title" name="title" required>
+                <input type="text" id="title" name="title">
             </div>
             <div id="noteDescription">
                 <label for="description">Description: </label>
@@ -47,7 +45,7 @@
         <form id="projectForm" method="dialog">
             <div id="projectName">
                 <label for="projectTitle">Project Name: </label>
-                <input type="text" name="projectTitle" id="projectTitle">
+                <input type="text" name="projectTitle" id="projectTitle" maxlength="15">
             </div>
             <div class="formButtons">
                 <button type="button" id="closeProject">Cancel</button>

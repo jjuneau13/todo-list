@@ -4,10 +4,16 @@ function createChild(element, content = null) {
     return ele;
 }
 
-function createNoteCard(note) {
+function createNoteCard(note, func) {
     const notes = document.querySelector(".notes");
-    const noteCard = document.createElement("div");
+    const noteCard = createChild("div");
+    const delButton = createChild("button");
+    delButton.addEventListener("click", () => {
+        func(note.id);
+        document.querySelector(`[data-id="${note.id}"]`).remove();
+    });
     noteCard.appendChild(createChild("h3", note.title));
+    noteCard.appendChild(delButton);
     if (note.dueDate) { noteCard.appendChild(createChild("p", note.dueDate))};
     noteCard.setAttribute("data-id", note.id);
     notes.appendChild(noteCard);
