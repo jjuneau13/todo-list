@@ -1,9 +1,9 @@
 import { createNoteCard, clearNoteCards, createChild } from "./noteDOM.js";
 //calls NoteDOM to display the notes within each project
-function displayProject(notes, func, edit) {
+function displayProject(notes, func, completeFunc, edit) {
     clearNoteCards();
     notes.forEach((element) => {
-        createNoteCard(element, func, edit);
+        createNoteCard(element, func, completeFunc, edit);
     });
 }
 
@@ -27,8 +27,8 @@ function addProjectToSidebar(func, name, id, activeID) {
     //handles setting the active project when clicked
     button.addEventListener("click", () => {
         func(id);
-        document.querySelector(".activeProject").setAttribute("class", "sidebarProjectButton");
-        document.querySelector(`[data-projectid="${id}"]`).setAttribute("class", "activeProject");
+        document.querySelector(".activeProject").classList.replace("activeProject", "sidebarProjectButton");
+        document.querySelector(`[data-projectid="${id}"]`).classList.replace("sidebarProjectButton", "activeProject");
     });
     buttonDiv.append(button, delButton);
     sidebar.appendChild(buttonDiv);

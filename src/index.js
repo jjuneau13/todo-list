@@ -40,6 +40,8 @@ attachProjectSubmit((title) => {
 //Refreshed the notes within each project
 function refreshview() {
     displayProject(getActiveProject().notes, deleteNote, (id) => {
+        getActiveProject().findNote(id).toggleCompleted();
+    }, (id) => {
         editNote(getActiveProject().findNote(id), updateNote);
     });
     projectSidebar();

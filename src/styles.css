@@ -62,8 +62,6 @@ h2 {
     background-color: rgb(30, 30, 30);
 }
 
-
-
 .sidebar-projects > button:active {
     outline: none;
     box-shadow: inset 2px 2px 5px rgb(15, 15, 15);
@@ -123,16 +121,29 @@ h2 {
     margin-bottom: 10px;
 }
 
-.del-button {
+.del-button,
+.complete-button {
     position: absolute;
     top: 15px;
-    right: 15px;
     height: 30px;
     width: 30px;
     border-radius: 50%;
     background-color: rgb(70, 70, 70);
     border: none;
+}
+
+.complete-button {
+    right: 50px;
+    background: url("./assets/check.svg") no-repeat center;
+}
+
+.del-button {
+    right: 15px;
     background: url("./assets/close.svg") no-repeat center;
+}
+
+.completed {
+    opacity: 50%;
 }
 
 .del-button:hover,
@@ -140,14 +151,19 @@ h2 {
     background-color: rgba(255, 0, 0, 0.71);
 }
 
+.complete-button:hover {
+    background-color: rgba(3, 255, 3, 0.51);
+}
+
 .title-button {
     border: none;
     background-color: rgba(0, 0, 0, 0);
     color: white;
     font-size: 1.5rem;
-    width: 75%;
+    width: 50%;
     text-align: start;
     padding: 15px 0px;
+    overflow: hidden;
 }
 
 #newNote,

@@ -4,10 +4,16 @@ function createChild(element, content = null) {
     return ele;
 }
 
-function createNoteCard(note, func, edit) {
+function createNoteCard(note, func, completeFunc, edit) {
     const notes = document.querySelector(".notes");
     const noteCard = createChild("div");
     const delButton = createChild("button");
+    const complete = createChild("button");
+    complete.setAttribute("class", "complete-button");
+    complete.addEventListener("click", () => {
+        completeFunc(note.id);
+        document.querySelector(`[data-id="${note.id}"]`).classList.toggle("completed");
+    })
     //Creates the function that deletes each note
     delButton.setAttribute("class", "del-button");
     delButton.addEventListener("click", () => {
@@ -18,10 +24,8 @@ function createNoteCard(note, func, edit) {
     //Makes the title and shows the update dialog when clicked
     title.setAttribute("class", "title-button");
     title.addEventListener("click", () => {
-        console.log(note.id);
         edit(note.id)});
-    noteCard.appendChild(title)
-    noteCard.appendChild(delButton);
+    noteCard.append(title, complete, delButton)
     if (note.dueDate) { noteCard.appendChild(createChild("p", note.dueDate))};
     noteCard.setAttribute("data-id", note.id);
     notes.appendChild(noteCard);
