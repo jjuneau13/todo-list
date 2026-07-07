@@ -8,6 +8,13 @@ export default class Note {
         this.id = crypto.randomUUID();
     };
 
+    updateNote(title, description, dueDate, priority) {
+        this.title = title;
+        this.description = description;
+        this.dueDate = dueDate;
+        this.priority = priority;
+    }
+
     toggleCompleted() {
         this.completed = !this.completed;
     }

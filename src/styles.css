@@ -34,7 +34,8 @@ h2 {
     box-shadow: 10px 10px 10px rgb(30, 30, 30);
 }
 
-.sidebar-projects > div {
+.sidebarProjectButton,
+.activeProject {
     background-color: rgb(50, 50, 50);
     color: white;
     border: none;
@@ -56,9 +57,12 @@ h2 {
     overflow: hidden;
 }
 
-.sidebar-projects > div:hover {
+.sidebarProjectButton:hover,
+.activeProject {
     background-color: rgb(30, 30, 30);
 }
+
+
 
 .sidebar-projects > button:active {
     outline: none;
@@ -80,6 +84,7 @@ h2 {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     grid-template-rows: max-content;
     gap: 10px;
+    margin-right: 10px;
 }
 
 .note-header,
@@ -113,7 +118,12 @@ h2 {
     box-shadow: 5px 5px 10px rgb(21, 21, 21);
 }
 
-.notes > div > button {
+.notes > div > p {
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+.del-button {
     position: absolute;
     top: 15px;
     right: 15px;
@@ -125,9 +135,19 @@ h2 {
     background: url("./assets/close.svg") no-repeat center;
 }
 
-.notes > div > button:hover,
+.del-button:hover,
 .project-delete:hover {
     background-color: rgba(255, 0, 0, 0.71);
+}
+
+.title-button {
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+    font-size: 1.5rem;
+    width: 75%;
+    text-align: start;
+    padding: 15px 0px;
 }
 
 #newNote,
@@ -154,10 +174,15 @@ h2 {
 
 .formButtons > button {
     background-color: rgb(30, 30, 30);
+    display: block;
     color: white;
     border: none;
     padding: 5px 10px;
     border-radius: 5px;
+}
+
+#editNote {
+    display: none;
 }
 
 .formButtons > button:hover {

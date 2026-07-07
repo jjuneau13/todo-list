@@ -12,4 +12,16 @@ export default class Project {
         this.notes.push(newNote);
         return newNote.id;
     }
+
+    findNote(id) {
+        return this.notes.find((note) => note.id === id);
+    }
+
+    editNote(title, description = null, dueDate = null, priority = 1, id) {
+        this.findNote(id).updateNote(title, description, dueDate, priority);
+    }
+
+    editName(title) {
+        this.name = title;
+    }
 }

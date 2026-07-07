@@ -12,6 +12,19 @@ function addProject(name) {
 
 function deleteProject(id) {
     projects = projects.filter((project) => project.id != id);
+    if (getProjects().length == 0) {
+        addProject("New");
+    }
+    setActiveProject(getProjects()[0].id);
+}
+
+function findProject(id) {
+    return projects.find((project) => project.id === id);
+}
+
+function editProjectName(title, id) {
+    findProject(id).editName(title);
+    setActiveProject(id);
 }
 
 function deleteNote(id) {
@@ -30,4 +43,4 @@ function getProjects() {
     return projects;
 }
 
-export { addProject, deleteProject, getActiveProject, setActiveProject, getProjects, deleteNote }
+export { addProject, deleteProject, getActiveProject, setActiveProject, getProjects, deleteNote, editProjectName }
