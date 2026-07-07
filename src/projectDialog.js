@@ -8,6 +8,14 @@ function initProjectCancel() {
     });
 }
 
+function initAddProject() {
+    const addButton = document.querySelector("#addProject");
+    addButton.addEventListener("click", () => {
+        document.querySelector("#submitProject").textContent = "Add";
+        editingProject = null;
+    })
+}
+
 function attachProjectSubmit(addFunc, editFunc) {
     const submitProject = document.querySelector("#submitProject");
     submitProject.addEventListener("click", () => {
@@ -30,14 +38,13 @@ function attachProjectSubmit(addFunc, editFunc) {
 }
 
 function editProject(project) {
-    const projectDialog = document.querySelector("#newProject");
-    const editButton = document.querySelector("#editProject");
     const submitProject = document.querySelector("#submitProject");
-    const projectForm = document.querySelector("#projectForm");
-
+    submitProject.textContent = "Update";
     editingProject = project;
     document.querySelector("#projectTitle").value = project.name;
-    projectDialog.showModal();
+    document.querySelector("#newProject").showModal();
 }
 
-export { initProjectCancel, attachProjectSubmit, editProject };
+
+
+export { initProjectCancel, attachProjectSubmit, editProject, initAddProject };

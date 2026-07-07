@@ -1,7 +1,7 @@
 import { displayProject, addProjectToSidebar, clearSidebar, addSidebarListener } from "./projectDOM.js";
 import { addProject, deleteProject, getActiveProject, setActiveProject, getProjects, deleteNote, editProjectName } from "./projectManager.js";
-import { initNoteCancel, initNoteEdit, initNewNote, attachNoteSubmit, editNote } from "./noteDialog.js";
-import { initProjectCancel, attachProjectSubmit, editProject } from "./projectDialog.js";
+import { initNoteCancel, initNewNote, attachNoteSubmit, editNote } from "./noteDialog.js";
+import { initProjectCancel, attachProjectSubmit, editProject, initAddProject } from "./projectDialog.js";
 import "./styles.css";
 
 if (getProjects().length == 0) {
@@ -11,8 +11,8 @@ if (getProjects().length == 0) {
 //initializes the create, edit, and cancel buttons for the dialogs
 initNoteCancel();
 initProjectCancel();
-initNoteEdit(updateNote);
 initNewNote();
+initAddProject();
 
 addSidebarListener((id) => {
         deleteProject(id);
@@ -23,6 +23,9 @@ addSidebarListener((id) => {
 attachNoteSubmit((title, description, dueDate) => {
     getActiveProject().addNote(title, description, dueDate);
     refreshview()
+}, (title, description, dueDate, id) => {
+    getActiveProject().editNote(title, description, dueDate, 1, id);
+    refreshview();
 });
 
 //Adds projects to project manager
@@ -57,7 +60,6 @@ function projectSidebar() {
     clearSidebar();
     getProjects().forEach((project) => {
     addProjectToSidebar((id) => {
-        console.log(id);
         if (id === getActiveProject().id) {
             editProject(project);
         }
