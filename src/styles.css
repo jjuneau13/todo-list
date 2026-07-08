@@ -108,12 +108,11 @@ h2 {
 }
 
 .notes > div {
-    background-color: rgb(70, 70, 70);
     position: relative;
     border-radius: 15px;
     padding: 0px 15px;
     height: max-content;
-    box-shadow: 5px 5px 10px rgb(21, 21, 21);
+    box-shadow: 2px 2px 10px 3px rgb(21, 21, 21);
 }
 
 .notes > div > p {
@@ -146,13 +145,25 @@ h2 {
     opacity: 50%;
 }
 
+.priority1 {
+    background-color: rgb(100, 0, 0);
+}
+
+.priority2 {
+    background-color: rgb(100, 65, 0);
+}
+
+.priority3 {
+    background-color: rgb(100, 100, 0);
+}
+
 .del-button:hover,
 .project-delete:hover {
     background-color: rgba(255, 0, 0, 0.71);
 }
 
 .complete-button:hover {
-    background-color: rgba(3, 255, 3, 0.51);
+    background-color: rgba(0, 255, 0, 0.51);
 }
 
 .title-button {
@@ -180,6 +191,11 @@ h2 {
 #projectName {
     display: flex;
     flex-direction: column;
+}
+
+#notePriority {
+    display: flex;
+    justify-content: space-between;
 }
 
 .formButtons {

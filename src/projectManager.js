@@ -1,13 +1,35 @@
 import Project from "./project.js";
+import { updateProjectStorage, getStored } from "./storage.js";
 
 let projects = [];
 let activeProject;
 
+function pushProjects() {
+    updateProjectStorage(activeProject, projects);
+}
 
-function addProject(name) {
-    const newProject = new Project(name);
+function initProjects() {
+    const stored = getStored();
+    if (stored) {
+        activeProject = stored.activeProject;
+        stored.projects.forEach((project) => {
+            const newProj = addProject(project.name, project.id, false);
+            newProj.reconstruct(project.notes);
+        })
+    }
+    
+    if (projects.length == 0) {
+        addProject("New");
+    }
+}
+
+function addProject(name, id, setActive = true) {
+    const newProject = new Project(name, id);
     projects.push(newProject);
-    activeProject = newProject.id;
+    if (setActive) {
+        activeProject = newProject.id};
+    pushProjects();
+    return newProject;
 }
 
 function deleteProject(id) {
@@ -16,6 +38,7 @@ function deleteProject(id) {
         addProject("New");
     }
     setActiveProject(getProjects()[0].id);
+    pushProjects();
 }
 
 function findProject(id) {
@@ -25,10 +48,12 @@ function findProject(id) {
 function editProjectName(title, id) {
     findProject(id).editName(title);
     setActiveProject(id);
+    pushProjects();
 }
 
 function deleteNote(id) {
     getActiveProject().notes = getActiveProject().notes.filter((note) => note.id != id);
+    pushProjects();
 }
 
 function getActiveProject() {
@@ -43,4 +68,4 @@ function getProjects() {
     return projects;
 }
 
-export { addProject, deleteProject, getActiveProject, setActiveProject, getProjects, deleteNote, editProjectName }
+export { addProject, initProjects, pushProjects, deleteProject, getActiveProject, setActiveProject, getProjects, deleteNote, editProjectName }

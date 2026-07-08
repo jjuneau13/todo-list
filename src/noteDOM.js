@@ -25,7 +25,8 @@ function createNoteCard(note, func, completeFunc, edit) {
     title.setAttribute("class", "title-button");
     title.addEventListener("click", () => {
         edit(note.id)});
-    noteCard.append(title, complete, delButton)
+    noteCard.append(title, complete, delButton);
+    noteCard.classList.add(`priority${note.priority}`);
     if (note.dueDate) { noteCard.appendChild(createChild("p", note.dueDate))};
     noteCard.setAttribute("data-id", note.id);
     notes.appendChild(noteCard);

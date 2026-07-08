@@ -23,13 +23,13 @@ function attachNoteSubmit(addFunc, editFunc) {
         const noteForm = new FormData(document.querySelector("#noteForm"));
         if (editingNote) {
             if (noteForm.get("title")) {
-                editFunc(noteForm.get("title"), noteForm.get("description"), noteForm.get("dueDate"), editingNote.id);
+                editFunc(noteForm.get("title"), noteForm.get("description"), noteForm.get("dueDate"), noteForm.get("priority"), editingNote.id);
             };
             editingNote = null;
         }
         else {
             if (noteForm.get("title")) {
-                addFunc(noteForm.get("title"), noteForm.get("description"), noteForm.get("dueDate"));
+                addFunc(noteForm.get("title"), noteForm.get("description"), noteForm.get("dueDate"), noteForm.get("priority"));
             };
         }
         document.querySelector("#noteForm").reset();
@@ -37,7 +37,7 @@ function attachNoteSubmit(addFunc, editFunc) {
     });
 }
 
-function editNote(note) {
+function editNoteDiag(note) {
     const noteDialog = document.querySelector("#newNote");
     const submitNote = document.querySelector("#submitNote");
     const noteForm = document.querySelector("#noteForm");
@@ -47,7 +47,8 @@ function editNote(note) {
     document.querySelector("#title").value = note.title;
     document.querySelector("#description").value = note.description;
     document.querySelector("#dueDate").value = note.dueDate;
+    document.querySelector("#priority").value = note.priority;
     noteDialog.showModal();
 }
 
-export { initNoteCancel, initNewNote, attachNoteSubmit, editNote }
+export { initNoteCancel, initNewNote, attachNoteSubmit, editNoteDiag }

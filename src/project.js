@@ -1,14 +1,14 @@
 import Note from "./note.js";
 
 export default class Project {
-    constructor(name) {
+    constructor(name, id = null) {
         this.name = name;
         this.notes = [];
-        this.id = crypto.randomUUID();
+        this.id = id ? id : crypto.randomUUID();
     }
 
-    addNote(title, description = null, dueDate = null, priority = 1) {
-        const newNote = new Note(title, description, dueDate, priority);
+    addNote(title, description = null, dueDate = null, priority = 1, completed) {
+        const newNote = new Note(title, description, dueDate, priority, completed);
         this.notes.push(newNote);
         return newNote.id;
     }
@@ -23,5 +23,12 @@ export default class Project {
 
     editName(title) {
         this.name = title;
+    }
+
+    reconstruct(notes) {
+        notes.forEach((note) => {
+            console.log(note);
+            this.addNote(note.title, note.description, note.dueDate, note.priority, note.completed)
+        })
     }
 }
