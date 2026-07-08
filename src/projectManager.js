@@ -10,7 +10,7 @@ function pushProjects() {
 
 function initProjects() {
     const stored = getStored();
-    if (stored) {
+    if (stored.projects) {
         activeProject = stored.activeProject;
         stored.projects.forEach((project) => {
             const newProj = addProject(project.name, project.id, false);
@@ -27,8 +27,9 @@ function addProject(name, id, setActive = true) {
     const newProject = new Project(name, id);
     projects.push(newProject);
     if (setActive) {
-        activeProject = newProject.id};
-    pushProjects();
+        activeProject = newProject.id;
+        pushProjects();
+    };
     return newProject;
 }
 
@@ -37,7 +38,9 @@ function deleteProject(id) {
     if (getProjects().length == 0) {
         addProject("New");
     }
-    setActiveProject(getProjects()[0].id);
+    if (id === activeProject) {
+        setActiveProject(getProjects()[0].id);
+    }
     pushProjects();
 }
 
@@ -52,7 +55,7 @@ function editProjectName(title, id) {
 }
 
 function deleteNote(id) {
-    getActiveProject().notes = getActiveProject().notes.filter((note) => note.id != id);
+    getActiveProject().removeNote(id);
     pushProjects();
 }
 

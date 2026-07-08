@@ -17,6 +17,10 @@ export default class Project {
         return this.notes.find((note) => note.id === id);
     }
 
+    removeNote(id) {
+        this.notes = this.notes.filter((note) => note.id != id);
+    }
+
     editNote(title, description = null, dueDate = null, priority = 1, id) {
         this.findNote(id).updateNote(title, description, dueDate, priority);
     }
@@ -27,8 +31,7 @@ export default class Project {
 
     reconstruct(notes) {
         notes.forEach((note) => {
-            console.log(note);
-            this.addNote(note.title, note.description, note.dueDate, note.priority, note.completed)
+            this.addNote(note.title, note.description, note.dueDate, note.priority, note.completed, note.id)
         })
     }
 }

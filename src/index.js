@@ -39,6 +39,7 @@ attachProjectSubmit((title) => {
 function refreshview() {
     displayProject(getActiveProject().notes, deleteNote, (id) => {
         getActiveProject().findNote(id).toggleCompleted();
+        pushProjects();
     }, (id) => {
         editNoteDiag(getActiveProject().findNote(id), updateNote);
     });
@@ -52,10 +53,6 @@ function updateNote(title, description = null, dueDate = null, priority = 1, id)
     refreshview();
 }
 
-function updateProject(title) {
-    editProjectName(title, getActiveProject().id);
-    refreshview();
-}
 //Gets the projects in an array and creates a button and delete button for them
 function projectSidebar() {
     clearSidebar();
@@ -68,13 +65,7 @@ function projectSidebar() {
             setActiveProject(project.id);
             pushProjects();
         }
-        displayProject(getActiveProject().notes, deleteNote, (id) => {
-            getActiveProject().findNote(id).toggleCompleted();
-        }, (id) => {
-            editNoteDiag(getActiveProject().findNote(id), updateNote)
-        }
-    );
-
+        refreshview();
     }, project.name, project.id, getActiveProject().id);
 })}
 
